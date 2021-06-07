@@ -1,7 +1,12 @@
 name: Publish Docker image
 on:
-  release:
-    types: [published]
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
 jobs:
   push_to_registry:
     name: Push Docker image to GitHub Packages
